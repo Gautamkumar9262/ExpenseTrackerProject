@@ -1,34 +1,18 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { AppContext } from "../context/AppContext"
+
 const Register = () => {
+    const { handleRegister } = useContext(AppContext)
+
     const [form, setForm] = useState({
         name: "",
         email: "",
         password: ""
     })
 
-
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
-
-    const handleRegister = async (name, email, password) => {
-        try {
-            const response = await fetch('https://expensetrackerpro1.netlify.app/api/user/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, password }),
-            });
-            console.log(response)
-            const data = await response.json();
-            if (data.success) {
-                alert("Registration successful!");
-            } else {
-                alert(data.message);
-            }
-        } catch (error) {
-            alert(error.error);
-        }
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -48,7 +32,7 @@ const Register = () => {
                         type="text"
                         name="name"
                         value={form.name}
-                        onChange={(e)=>handleChange(e)}
+                        onChange={handleChange}
                         required
                         className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
                         placeholder="Enter your name"
@@ -60,7 +44,7 @@ const Register = () => {
                         type="email"
                         name="email"
                         value={form.email}
-                        onChange={(e)=>handleChange(e)}
+                        onChange={handleChange}
                         required
                         className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
                         placeholder="Enter your email"
@@ -72,7 +56,7 @@ const Register = () => {
                         type="password"
                         name="password"
                         value={form.password}
-                        onChange={(e)=>handleChange(e)}
+                        onChange={handleChange}
                         required
                         className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
                         placeholder="Enter your password"

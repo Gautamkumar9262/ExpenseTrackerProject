@@ -14,7 +14,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({extends:true}))
 app.use(cors({
-  origin:"https://expensetrackerpro1.netlify.app/",
+  origin:"https://expensetrackerpro1.netlify.app",
     methods:["GET","POST","DELETE", "PUT"],
     Credential:true
   
