@@ -16,8 +16,8 @@ const AppContextProvider = ({ children }) => {
     const [token, setToken] = useState(Boolean(cookie.get("token")))
 
     //backend url
-    const backendUrl = 'http://localhost:4000'
-    // const backendUrl = 'https://expense-tracker-project-two.vercel.app/'
+    // const backendUrl = 'http://localhost:4000'
+    const backendUrl = 'https://expense-tracker-project-two.vercel.app/'
     const utoken = cookie.get('token')
     // console.log(utoken)
 

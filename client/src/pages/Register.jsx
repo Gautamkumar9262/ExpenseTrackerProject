@@ -112,7 +112,7 @@ const Register = () => {
 
     const handleRegister = async (name, email, password) => {
         try {
-            const response = await fetch('http://localhost:4000/api/user/register', {
+            const response = await fetch('https://expensetrackerpro1.netlify.app/api/user/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password }),
