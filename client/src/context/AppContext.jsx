@@ -6,7 +6,6 @@ import { toast } from 'react-toastify'
 import { jwtDecode } from "jwt-decode"
 export const AppContext = createContext()
 
-
 const AppContextProvider = ({ children }) => {
     const navigate = useNavigate()
     const [ExpenseData, setExpenseData] = useState([])
@@ -14,6 +13,8 @@ const AppContextProvider = ({ children }) => {
     const [token, setToken] = useState(Boolean(cookie.get("token")))
 
     //backend url
+    const backendUrl='https://expense-tracker-project-two.vercel.app/';
+    console.log(backendUrl)
     const utoken = cookie.get('token')
     // console.log(utoken)
 
@@ -34,7 +35,7 @@ const AppContextProvider = ({ children }) => {
                 return;
             }
 
-            const { data } = await axios.get(`https://expense-tracker-project-two.vercel.app/api/user/get-income`, {
+            const { data } = await axios.get(`${backendUrl}/api/user/get-income`, {
                 headers: {
                     Authorization: `Bearer ${utoken}`
                 }
@@ -60,7 +61,7 @@ const AppContextProvider = ({ children }) => {
                 return;
             }
             console.log(id)
-            await axios.delete(`https://expense-tracker-project-two.vercel.app/api/user/delete-income/${id}`, {
+            await axios.delete(`${backendUrl}/api/user/delete-income/${id}`, {
                 headers: {
                     Authorization: `Bearer ${utoken}`
                 }
@@ -87,7 +88,7 @@ const AppContextProvider = ({ children }) => {
                 return
             }
 
-            const { data } = await axios.get(`https://expense-tracker-project-two.vercel.app/api/user/get-expense`, {
+            const { data } = await axios.get(`${backendUrl}/api/user/get-expense`, {
                 headers: {
                     Authorization: `Bearer ${utoken}`
                 }
@@ -110,7 +111,7 @@ const AppContextProvider = ({ children }) => {
                 return;
             }
             console.log(id)
-            await axios.delete(`https://expense-tracker-project-two.vercel.app/api/user/delete-expense/${id}`, {
+            await axios.delete(`${backendUrl}/api/user/delete-expense/${id}`, {
                 headers: {
                     Authorization: `Bearer ${utoken}`
                 }
@@ -124,7 +125,7 @@ const AppContextProvider = ({ children }) => {
     //addIncome
     const addIncome = async (title, amount, category, description, date) => {
         try {
-            const { data } = await axios.post(`https://expense-tracker-project-two.vercel.app/api/user/add-income`, { title, amount, category, description, date }, {
+            const { data } = await axios.post(`${backendUrl}/api/user/add-income`, { title, amount, category, description, date }, {
                 headers: {
                     Authorization: `Bearer ${utoken}`
                 }
@@ -143,7 +144,7 @@ const AppContextProvider = ({ children }) => {
     //addExpense
     const addExpense = async (title, amount, category, description, date) => {
         try {
-            const { data } = await axios.post(`https://expense-tracker-project-two.vercel.app/api/user/add-expense`, { title, amount, category, description, date }, {
+            const { data } = await axios.post(`${backendUrl}/api/user/add-expense`, { title, amount, category, description, date }, {
                 headers: {
                     Authorization: `Bearer ${utoken}`
                 }
@@ -161,7 +162,7 @@ const AppContextProvider = ({ children }) => {
     //Register 
     const handleRegister = async (name, email, password) => {
         try {
-            const { data } = await axios.post(`https://expense-tracker-project-two.vercel.app/api/user/register`, { name, email, password }, {
+            const { data } = await axios.post(`${backendUrl}/api/user/register`, { name, email, password }, {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -183,7 +184,7 @@ const AppContextProvider = ({ children }) => {
     //login
     const handleLogin = async (email, password) => {
         try {
-            const { data } = await axios.post(`https://expense-tracker-project-two.vercel.app/api/user/login`, { email, password }, {
+            const { data } = await axios.post(`${backendUrl}/api/user/login`, { email, password }, {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -218,6 +219,7 @@ const AppContextProvider = ({ children }) => {
 
     //value
     const values = {
+        backendUrl,
         handleRegister,
         handleLogin,
         fetchIncome,

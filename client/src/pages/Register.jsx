@@ -23,7 +23,7 @@ const Register = () => {
             if (data.success) {
                 alert("Registration successful!");
             } else {
-                alert(data.message,"wrong");
+                alert(data.message);
             }
         } catch (error) {
             alert(error.error);
