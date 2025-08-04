@@ -13,11 +13,10 @@ const AppContextProvider = ({ children }) => {
     const [token, setToken] = useState(Boolean(cookie.get("token")))
 
     //backend url
-    const backendUrl='https://expense-tracker-project-two.vercel.app/';
+    const backendUrl='https://expense-tracker-project-two.vercel.app';
     console.log(backendUrl)
     const utoken = cookie.get('token')
     // console.log(utoken)
-
     //FetchIncome
     const fetchIncome = async () => {
         try {
