@@ -26,7 +26,7 @@ const Register = () => {
                 alert(data.message);
             }
         } catch (error) {
-            alert(error.error);
+            alert("something went wrong");
         }
     };
 
