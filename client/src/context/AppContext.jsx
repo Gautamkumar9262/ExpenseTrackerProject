@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import { jwtDecode } from "jwt-decode"
 export const AppContext = createContext()
 
+
 const AppContextProvider = ({ children }) => {
     const navigate = useNavigate()
     const [ExpenseData, setExpenseData] = useState([])
@@ -13,7 +14,7 @@ const AppContextProvider = ({ children }) => {
     const [token, setToken] = useState(Boolean(cookie.get("token")))
 
     //backend url
-    const backendUrl='https://expense-tracker-project-two.vercel.app';
+    const backendUrl=import.meta.env.VITE_BACKEND_URL;
     console.log(backendUrl)
     const utoken = cookie.get('token')
     // console.log(utoken)
