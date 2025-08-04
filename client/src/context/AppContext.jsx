@@ -17,6 +17,7 @@ const AppContextProvider = ({ children }) => {
 
     //backend url
     const backendUrl = 'http://localhost:4000'
+    // const backendUrl = 'https://expense-tracker-project-two.vercel.app/'
     const utoken = cookie.get('token')
     // console.log(utoken)
 
