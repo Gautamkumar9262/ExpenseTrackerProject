@@ -25,7 +25,6 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData.password)
         handleLogin(formData.email, formData.password)
         setIsModel(false)
         navigate('/')
