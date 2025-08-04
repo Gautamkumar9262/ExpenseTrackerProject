@@ -18,6 +18,13 @@ app.use(cookieParser())
 
 app.use("/api/user", userRouter);
 
+app.get("/", (req, res)=>{
+  res.send({
+      activeStatus:true,
+      error:false,
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Server connected to port : ${PORT}`);
 });
