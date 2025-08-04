@@ -23,10 +23,10 @@ const Register = () => {
             if (data.success) {
                 alert("Registration successful!");
             } else {
-                alert(data.message);
+                alert(data.message,"wrong");
             }
         } catch (error) {
-            alert("something went wrong");
+            alert(error.error);
         }
     };
 
