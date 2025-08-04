@@ -13,7 +13,9 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({extends:true}))
-app.use(cors());
+app.use(cors({
+  origin:["https://expensetrackerpro1.netlify.app/"]
+}));
 app.use(cookieParser())
 
 app.use("/api/user", userRouter);
